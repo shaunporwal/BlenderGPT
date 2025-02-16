@@ -17,14 +17,10 @@ def init_props():
         name="Language Model",
         description="Select the Language Model to use",
         items=[
-            ("o1", "o1", "Use o1"),
-            ("o1-mini", "o1-mini", "Use o1-mini"),
-            ("gpt-4o", "GPT-4o", "Use GPT-4o"),
-            ("gpt-4o-mini", "GPT-4o Mini", "Use GPT-4o Mini"),
             ("gpt-4", "GPT-4", "Use GPT-4"),
             ("gpt-3.5-turbo", "GPT-3.5 Turbo", "Use GPT-3.5 Turbo"),
         ],
-        default="gpt-4o",
+        default="gpt-4",
     )
     bpy.types.Scene.llm_chat_input = bpy.props.StringProperty(
         name="Message",
