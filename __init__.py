@@ -16,7 +16,7 @@ bl_info = {
     "name": "LLM Blender Assistant",
     "blender": (2, 82, 0),
     "category": "Object",
-    "author": "Shaun Porwal (@shaunporwal)",
+    "author": "Shaun Porwal",
     "version": (2, 0, 0),
     "location": "3D View > UI > LLM Blender Assistant",
     "description": "Generate Blender Python code using Large Language Models to perform various tasks.",
@@ -103,7 +103,6 @@ class LLM_PT_Panel(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'LLM Assistant'
-    bl_options = {'DEFAULT_CLOSED'}
 
     def draw(self, context):
         layout = self.layout
@@ -205,7 +204,7 @@ class LLM_OT_Execute(bpy.types.Operator):
 def menu_func(self, context):
     self.layout.operator(LLM_OT_Execute.bl_idname)
 
-class GPTAddonPreferences(bpy.types.AddonPreferences):
+class LLMAddonPreferences(bpy.types.AddonPreferences):
     bl_idname = __name__
 
     api_key: bpy.props.StringProperty(
@@ -220,19 +219,20 @@ class GPTAddonPreferences(bpy.types.AddonPreferences):
         layout.prop(self, "api_key")
 
 def register():
-    bpy.utils.register_class(GPTAddonPreferences)
+    bpy.utils.register_class(LLMAddonPreferences)
     bpy.utils.register_class(LLM_OT_Execute)
     bpy.utils.register_class(LLM_PT_Panel)
     bpy.utils.register_class(LLM_OT_ClearChat)
     bpy.utils.register_class(LLM_OT_ShowCode)
     bpy.utils.register_class(LLM_OT_DeleteMessage)
 
+
     bpy.types.VIEW3D_MT_mesh_add.append(menu_func)
     init_props()
 
 
 def unregister():
-    bpy.utils.unregister_class(GPTAddonPreferences)
+    bpy.utils.unregister_class(LLMAddonPreferences)
     bpy.utils.unregister_class(LLM_OT_Execute)
     bpy.utils.unregister_class(LLM_PT_Panel)
     bpy.utils.unregister_class(LLM_OT_ClearChat)

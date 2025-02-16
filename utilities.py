@@ -14,14 +14,18 @@ def get_api_key(context, addon_name):
 def init_props():
     bpy.types.Scene.llm_chat_history = bpy.props.CollectionProperty(type=bpy.types.PropertyGroup)
     bpy.types.Scene.llm_model = bpy.props.EnumProperty(
-        name="Language Model",
-        description="Select the Language Model to use",
-        items=[
-            ("gpt-4", "GPT-4", "Use GPT-4"),
-            ("gpt-3.5-turbo", "GPT-3.5 Turbo", "Use GPT-3.5 Turbo"),
-        ],
-        default="gpt-4",
-    )
+    name="Language Model",
+    description="Select the Language Model to use",
+    items=[
+        ("o1", "o1 (powerful, expensive)", "Use o1"),
+        ("o1-mini", "o1-mini (less powerful, cheaper)", "Use o1-mini"),
+        ("gpt-4o", "GPT-4o (powerful, expensive)", "Use GPT-4o"),
+        ("gpt-4o-mini", "GPT-4o Mini (less powerful, cheaper)", "Use GPT-4o Mini"),
+        ("gpt-4", "GPT-4 (powerful, expensive)", "Use GPT-4"),
+        ("gpt-3.5-turbo", "GPT-3.5 Turbo (less powerful, cheaper)", "Use GPT-3.5 Turbo"),
+    ],
+    default="gpt-4",
+)
     bpy.types.Scene.llm_chat_input = bpy.props.StringProperty(
         name="Message",
         description="Enter your message",
@@ -46,7 +50,6 @@ def generate_blender_code(prompt, chat_history, context, system_prompt):
 
     # Add the current user message
     messages.append({"role": "user", "content": "Can you please write Blender code for me that accomplishes the following task: " + prompt + "? \n. Do not respond with anything that is not Python code. Do not provide explanations"})
-
 
     response = openai.ChatCompletion.create(
         model=context.scene.llm_model,
