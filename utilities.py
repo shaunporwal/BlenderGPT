@@ -17,8 +17,8 @@ def init_props():
     name="GPT Model",
     description="Select the GPT model to use",
     items=[
-        ("gpt-4", "GPT-4 (powerful, expensive)", "Use GPT-4"),
-        ("gpt-3.5-turbo", "GPT-3.5 Turbo (less powerful, cheaper)", "Use GPT-3.5 Turbo"),
+        ("gpt-4", "GPT-4", "Use GPT-4"),
+        ("gpt-3.5-turbo", "GPT-3.5 Turbo", "Use GPT-3.5 Turbo"),
     ],
     default="gpt-4",
 )
