@@ -1,10 +1,6 @@
 # BlenderGPT
-![Header](https://user-images.githubusercontent.com/63528145/227160213-6862cd5e-b31f-43ea-a5e5-6cc340a95617.png)
 
-
-
-
-
+Forked from [Aarya Gadekar](https://github.com/aaryagadekar/blender-gpt)
 
 Blender can be controlled using program scripts written in Python. Recent Large Language Models like OpenAI's GPT models can generate these Python scripts from simple English and execute them. This plugin provides an easy to use interface that integrates OpenAI's GPT models right in the UI, allowing you to use natural language commands to control Blender.
 
